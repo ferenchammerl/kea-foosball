@@ -30,6 +30,12 @@ body {
     font-size: 4.5em;
     font-weight: 700;
 }
+.text-vertical-center h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+}
 
 /* Custom Button Styles */
 
@@ -142,6 +148,10 @@ hr.small {
     right: 0;
 }
 
+.row{
+    margin-bottom: 10px;
+}
+
 #sidebar-wrapper.active {
     right: 250px;
     width: 250px;
@@ -186,6 +196,19 @@ hr.small {
     margin-bottom: 30px;
 }
 
+/* Container */
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+    opacity: 0.8;
+}
+.container .jumbotron2 {
+  border-radius: 6px;
+}
+
 /* Callout */
 
 .callout {
@@ -217,6 +240,45 @@ hr.small {
 .img-portfolio:hover {
     opacity: 0.8;
 }
+
+/* Custom Jumbotron */
+
+.jumbotron {
+  padding: 15px;
+  margin-bottom: 30px;
+  color: black;
+  background-color: #eee;
+  opacity: 0.5;
+}
+
+.jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+.jumbotron2 {
+  padding: 15px;
+  margin-bottom: 30px;
+  color: black;
+  background-color: #eee;
+  opacity: 0.9;
+}
+
+.jumbotron2 h1,
+  .jumbotron .h1 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+.jumbotron2 .btn {
+    margin-right: 5px;
+}
+
+.jumbotron2 .input-group {
+    margin-bottom: 12px;
+}
+
 
 /* Call to Action */
 
