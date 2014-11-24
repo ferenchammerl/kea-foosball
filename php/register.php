@@ -12,27 +12,10 @@ if (!empty($_POST)) {
         die("Invalid E-Mail Address");
     }
 
-
-    $query = "SELECT username  FROM Users WHERE username = ?";
-
-
-    if ($stmt = $mysqli->prepare($query)) {
-
-        $stmt->bind_param('s', $_POST['username']);
-        /* execute statement */
-        $stmt->execute();
-
-        /* bind result variables */
-        $stmt->bind_result($username);
-
-        /* fetch values */    /* fetch values */
-        while ($stmt->fetch()) {
-            die('Username exists');
-        }
-
-        /* close statement */
-        $stmt->close();
-    }
+    require_once('classes/register.php');
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    register::checkUsername($username);
 
 
     // Security measures
@@ -43,17 +26,7 @@ if (!empty($_POST)) {
     }
 
 
-    $stmt = $mysqli->prepare("INSERT INTO users (username,password,salt,email) VALUES (?,?,?,?)");
-
-    $stmt->bind_param('ssss', $un, $pw, $sa, $em);
-
-    $un = $mysqli->real_escape_string($_POST['username']);
-    $pw = $mysqli->real_escape_string($password);
-    $sa = $mysqli->real_escape_string($salt);
-    $em = $mysqli->real_escape_string($_POST['email']);
-
-    /* execute prepared statement */
-    $stmt->execute();
+    register::insertUser($username, $password, $salt, $email);
 
     printf("%d Row inserted.\n", $stmt->affected_rows);
 
