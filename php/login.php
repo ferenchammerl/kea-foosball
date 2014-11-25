@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("config.php");
+require('classes/login.php');
 
 if (!empty($_POST)) {
     // Ensure that the user fills out fields
@@ -10,44 +10,12 @@ if (!empty($_POST)) {
         die("Please enter a password.");
     }
 
+    $username = $_POST['username'];
 
-    $query = "SELECT username FROM users WHERE USERNAME = ?";
-
-
-    if ($stmt = $mysqli->prepare($query)) {
-        $stmt->bind_param('s', $_POST['username']);
-
-        $stmt->execute();
-
-        /* bind result variables */
-        $stmt->bind_result($username);
-
-
-        while ($stmt->fetch()) {
-            if ($username != $_POST['username']) die('Incorrect username');
-
-
-        }
-
-
-    } else {
-        $_SESSION['loginfailure'] = true;
-    }
-
-
-    $query = "SELECT salt, password FROM users WHERE USERNAME = ?";
-
-
-    if ($stmt = $mysqli->prepare($query)) {
-        $stmt->bind_param('s', $username);
-
-        $stmt->execute();
-
-        /* bind result variables */
-        $stmt->bind_result($salt, $dbpassword);
-        $stmt->fetch();
-
-    } else die("Password fetch failed");
+    login::checkUsername($username);
+    $salt = '';
+    $dbpassword = '';
+    login::fetchPassword($username, $salt, $dbpassword);
 
 
     $password = $_POST['password'];
@@ -57,7 +25,6 @@ if (!empty($_POST)) {
     }
 
 
-    $stmt->close();
     if ($password == $dbpassword) {
         $_SESSION['username'] = $username;
         echo 'You are now logged in';
