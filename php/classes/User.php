@@ -18,7 +18,6 @@ class User
     public $elo = 1000;
 
 
-
     function full_construct($elo, $email, $isHomen, $password, $salt, $user_id, $username)
     {
         $this->elo = $elo;
@@ -144,11 +143,15 @@ WHERE(
     public static function AttemptRegister($username, $password, $email)
     {
         User::checkIfUsername($username);
+        $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+        $password = User::saltedPW($password, $salt);
+        User::insertUser($username, $password, $salt, $email);
 
     }
 
     public static function saltedPW($password, $salt)
     {
+
         $password = hash('sha256', $password . $salt);
         for ($round = 0; $round < 65536; $round++) {
             $password = hash('sha256', $password . $salt);
