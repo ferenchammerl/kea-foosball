@@ -11,7 +11,7 @@ if (!empty($_POST)) {
     }
 
     $_SESSION['user']  =User::AttemptLogin( $_POST['username'],  $_POST['password']);
-    if(isset($_SESSION['user'])) echo 'gj!!'; else 'bg report';
+    if(isset($_SESSION['user'])) header("Location: creatematch.php"); else 'bg report';
 
 
 
