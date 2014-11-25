@@ -12,23 +12,8 @@ if (!empty($_POST)) {
         die("Invalid E-Mail Address");
     }
 
-    require_once('classes/register.php');
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    register::checkUsername($username);
-
-
-    // Security measures
-    $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
-    $password = hash('sha256', $_POST['password'] . $salt);
-    for ($round = 0; $round < 65536; $round++) {
-        $password = hash('sha256', $password . $salt);
-    }
-
-
-    register::insertUser($username, $password, $salt, $email);
-
-    printf("%d Row inserted.\n", $stmt->affected_rows);
+    require_once('classes/User.php');
+    User::AttemptRegister($_POST['username'], $_POST['password'], $_POST['email']);
 
 
     header("Location: ../index.php");

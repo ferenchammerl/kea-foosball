@@ -79,31 +79,25 @@
                 </div>
             </div>
         </div>
-
     </header>
+    <body>
+    
+<script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
+    
+<script>
+$(document).ready(function(){
+    var elem = document.getElementsByClassName("form-control");
+    for(var i=0; i<elem.length; i++){
+    $(elem[i]).typeahead({
+        remote: {
+        url : 'search.php?query=%QUERY'
+        }
+        
+    });
+    }
+});
+</script>
 
-    <script type='../text/javascript'>
-        var loginWindow = document.getElementById('loginWindow'); <? php
-        if (isset($_SESSION['loginfailure']) && $_SESSION['loginfailure']) {
-            $_SESSION['loginfailure'] = false;
-            echo 'loginWindow.click();';
-        } ?>
-    </script>
-
-    <script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $("#search").typeahead({
-                name: 'search',
-                id: 'search',
-                remote: {
-                    url: 'search.php?query=%QUERY'
-                }
-
-            });
-        });
-    </script>
 
 </body>
 
