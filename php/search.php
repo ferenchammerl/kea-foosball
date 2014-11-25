@@ -1,10 +1,10 @@
 <?php
-$con = new mysqli("localhost", "root", "muffinman", "foosball");
+require('config.php');
 
-$result = $con->query("SELECT USERNAME FROM USERS LIMIT 0,10");
+$result = $mysqli->query("SELECT USERNAME FROM USERS LIMIT 0,10");
     while ($row = $result->fetch_object()){
-         $user_arr2[] = $row->USERNAME;
+         $user_array[] = $row->USERNAME;
      }
      $result->close();
-     echo json_encode($user_arr2);
+     echo json_encode($user_array);
 ?>
