@@ -3,12 +3,10 @@
 <html lang="en">
 
 <?php include( "../html/headcontent.html") ?>
+<!-- Navigation -->
+<?php include( "../html/navigation.html") ?>
 
 <body>
-
-    <!-- Navigation -->
-    <?php include( "../html/navigation.html") ?>
-
     <header class="header">
         <div class="container">
             <div class="jumbotron2">
@@ -23,8 +21,9 @@
                         <h2><span class="label label-success">Winners</span></h2>
                     </div>
                 </div>
-                <div class="row">
-                    <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+
                         <div class="form-group">
                             <label for="inputfield1" class="col-sm-2 control-label">Player 1</label>
                             <div class="col-sm-3 controls">
@@ -42,15 +41,15 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-5 text-center">
-                        <h2><span class="label label-danger">Losers</span></h2>
+
                     </div>
-                </div>
-                <div class="row">
-                    <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-5 text-center">
+                            <h2><span class="label label-danger">Losers</span></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+
                         <div class="form-group">
                             <label for="inputfield3" class="col-sm-2 control-label">Player 3</label>
                             <div class="col-sm-3 controls">
@@ -68,8 +67,9 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+
+                    </div>
+                </form>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="btn btn-primary center-block">
@@ -79,24 +79,27 @@
                 </div>
             </div>
         </div>
+
     </header>
-    <body>
-    
-<script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
-    
-<script>
-$(document).ready(function(){
-    var elem = document.getElementsByClassName("form-control");
-    for(var i=0; i<elem.length; i++){
-    $(elem[i]).typeahead({
-        remote: {
-        url : 'search.php?query=%QUERY'
-        }
-        
-    });
-    }
-});
-</script>
+
+
+
+    <script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var elem = document.getElementsByClassName("form-control");
+            for (var i = 0; i < elem.length; i++) {
+                $(elem[i]).typeahead({
+                    remote: {
+
+                        url: 'search.php?query=%QUERY'
+                    }
+
+                });
+            }
+        });
+    </script>
 
 
 </body>
