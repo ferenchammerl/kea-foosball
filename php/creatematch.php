@@ -19,7 +19,9 @@
         <div class="container">
             <div class="jumbotron2">
                 <div class="row">
-                    <div class="col-md-2 col-md-offset-5 text-center"><h2><span class="label label-success">Winners</span></h2></div>
+                    <div class="col-md-2 col-md-offset-5 text-center">
+                        <h2><span class="label label-success">Winners</span></h2>
+                    </div>
                 </div>
                 <div class="row">
                     <form class="form-horizontal" role="form">
@@ -43,7 +45,9 @@
                     </form>
                 </div>
                 <div class="row">
-                    <div class="col-md-2 col-md-offset-5 text-center"><h2><span class="label label-danger">Losers</span></h2></div>
+                    <div class="col-md-2 col-md-offset-5 text-center">
+                        <h2><span class="label label-danger">Losers</span></h2>
+                    </div>
                 </div>
                 <div class="row">
                     <form class="form-horizontal" role="form">
