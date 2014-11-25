@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('classes/login.php');
+require('classes/User.php');
 
 if (!empty($_POST)) {
     // Ensure that the user fills out fields
@@ -10,31 +10,38 @@ if (!empty($_POST)) {
         die("Please enter a password.");
     }
 
-    $username = $_POST['username'];
-
-    login::checkUsername($username);
-    $salt = '';
-    $dbpassword = '';
-    login::fetchPassword($username, $salt, $dbpassword);
+    $_SESSION['user']  =User::AttemptLogin( $_POST['username'],  $_POST['password']);
+    if(isset($_SESSION['user'])) echo 'gj!!'; else 'bg report';
 
 
-    $password = $_POST['password'];
-    $password = hash('sha256', $password . $salt);
-    for ($round = 0; $round < 65536; $round++) {
-        $password = hash('sha256', $password . $salt);
-    }
 
-
-    if ($password == $dbpassword) {
-        $_SESSION['username'] = $username;
-        echo 'You are now logged in';
-        $_SESSION['Title'] = 'Welcome, ' . $username;
-        unset($_SESSION['loginfailure']);
-        header("Location: mymatches.php");
-    } else {
-        $_SESSION['loginfailure'] = true;
-        header("Location: ../index.php");
-
-    }
+//
+//
+//    $username = $_POST['username'];
+//
+//    User::checkUsername($username);
+//    $salt = '';
+//    $dbpassword = '';
+//    User::fetchPassword($username, $salt, $dbpassword);
+//
+//
+//    $password = $_POST['password'];
+//    $password = hash('sha256', $password . $salt);
+//    for ($round = 0; $round < 65536; $round++) {
+//        $password = hash('sha256', $password . $salt);
+//    }
+//
+//
+//    if ($password == $dbpassword) {
+//        $_SESSION['username'] = $username;
+//        echo 'You are now logged in';
+//        $_SESSION['Title'] = 'Welcome, ' . $username;
+//        unset($_SESSION['loginfailure']);
+//        header("Location: mymatches.php");
+//    } else {
+//        $_SESSION['loginfailure'] = true;
+//        header("Location: ../index.php");
+//
+//    }
 }
 ?>
