@@ -36,16 +36,16 @@
     <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <li class="sidebar-brand">
-            <a href="#top"><?php  if (isset($_SESSION['username'])) echo 'Welcome, ' . $_SESSION['username']; else echo 'Not logged in' ?></a>
+            <a href="#"><?php  if (isset($_SESSION['username'])) echo 'Welcome, ' . $_SESSION['username']; else echo 'Not logged in' ?></a>
         </li>
         <li>
-            <a href="#top">Home</a>
+            <a href="../php/home.php">Home</a>
         </li>
         <li>
-            <a href="#about">Create match</a>
+            <a href="../php/creatematch.php">Create match</a>
         </li>
         <li>
-            <a href="#services">Match history</a>
+            <a href="#">Match history</a>
         </li>
         <li>
             <a href="../php/logout.php">Logout</a>
@@ -53,29 +53,29 @@
     </ul>
 </nav>
 
-
 <!-- jQuery Version 1.11.0 -->
-<script src="../js/jquery-1.11.0.js"></script>
+    <script src="../js/jquery-1.11.0.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function (e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
 
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
 
-    // Scrolls to the selected menu item on the page
+        // Scrolls to the selected menu item on the page
 
-</script>
+    </script>
+
 </body>
 </html>
