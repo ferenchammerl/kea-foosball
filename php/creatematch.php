@@ -19,13 +19,13 @@
         <div class="jumbotron2">
             <div class="row">
               <div class="col-lg-4 col-lg-offset-2">
-                <div class="input-group">
+                <div class="form-group">
                   <span class="input-group-addon">
                     <label>Winner 1</label>
                   </span>
-                  <input type="text" class="form-control">
+                  <input id="search" name="search" type="text" class="form-control">
                 </div>
-                  <div class="input-group">
+                  <div class="form-group">
                   <span class="input-group-addon">
                     <label>Winner 2</label>
                   </span>
@@ -33,13 +33,13 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="input-group">
+                <div class="form-group">
                   <span class="input-group-addon">
                     <label>Loser 1</label>
                   </span>
                   <input type="text" class="form-control">
                 </div>
-                  <div class="input-group">
+                  <div class="form-group">
                   <span class="input-group-addon">
                     <label>Loser 2</label>
                   </span>
@@ -63,7 +63,21 @@
     var loginWindow = document.getElementById('loginWindow');
     <?php if (isset($_SESSION['loginfailure'])&&$_SESSION['loginfailure']){ $_SESSION['loginfailure']=false; echo 'loginWindow.click();';}?>
 </script>
-
+    
+<script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
+    
+<script>
+$(document).ready(function(){
+    $("#search").typeahead({
+        name : 'search',
+        id : 'search',
+        remote: {
+        url : 'search.php?query=%QUERY'
+        }
+        
+    });
+});
+</script>
 
 </body>
 

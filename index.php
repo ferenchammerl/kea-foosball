@@ -6,8 +6,6 @@
 
 <body>
 
-<!-- Navigation --><?php include("html/navigation.html") ?>
-
 <!-- Header -->
 <!-- Header -->
 <header id="top" class="header">
@@ -77,6 +75,8 @@
     </div>
 </footer>
 
+<!-- Scripts --><?php include("html/bottomcontent.html") ?>
+    
 <script type='text/javascript'>
     var loginWindow = document.getElementById('loginWindow');
     <?php if (isset($_SESSION['loginfailure'])&&$_SESSION['loginfailure']){ $_SESSION['loginfailure']=false; echo 'loginWindow.click();';}?>
