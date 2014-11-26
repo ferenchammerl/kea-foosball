@@ -69,11 +69,11 @@
 
                     </div>
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4">
-                        <div class="btn btn-primary center-block">
-                            <input type="submit" value="OK" class="border:0">
-                        </div>
-                    </div>
+                    <div class="col-lg-4 col-lg-offset-4 " style="text-align: center;">
+                    <button  type="submit" class="btn btn-primary">
+                        OK
+                    </button >
+                </div>
                 </div>
                 </form>
             </div>
