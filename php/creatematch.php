@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include( "../html/headcontent.html") ?>
 <!-- Navigation -->
 <?php include( "../html/navigation.html") ?>
 
@@ -21,7 +20,7 @@
                         <h2><span class="label label-success">Winners</span></h2>
                     </div>
                 </div>
-                <form class="form-horizontal" role="form">
+                <form action = "creategame.php"  class="form-horizontal" role="form"  method="POST">
                     <div class="row">
 
                         <div class="form-group">
@@ -29,7 +28,7 @@
                             <div class="col-sm-3 controls">
                                 <div class="input-group">
                                     <span class="input-group-addon"><a class="glyphicon glyphicon-user"></a></span>
-                                    <input type="text" class="form-control" id="inputfield1" placeholder="...">
+                                    <input type="text" name="win1" class="form-control" id="inputfield1" placeholder="...">
                                 </div>
                             </div>
 
@@ -37,7 +36,7 @@
                             <div class="col-sm-3 controls">
                                 <div class="input-group">
                                     <span class="input-group-addon"><a class="glyphicon glyphicon-user"></a></span>
-                                    <input type="text" class="form-control" id="inputfield2" placeholder="...">
+                                    <input type="text" name="win2" class="form-control" id="inputfield2" placeholder="...">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +54,7 @@
                             <div class="col-sm-3 controls">
                                 <div class="input-group">
                                     <span class="input-group-addon"><a class="glyphicon glyphicon-user"></a></span>
-                                    <input type="text" class="form-control" id="inputfield3" placeholder="...">
+                                    <input type="text" name="los1" class="form-control" id="inputfield3" placeholder="...">
                                 </div>
                             </div>
 
@@ -63,20 +62,20 @@
                             <div class="col-sm-3 controls">
                                 <div class="input-group">
                                     <span class="input-group-addon"><a class="glyphicon glyphicon-user"></a></span>
-                                    <input type="text" class="form-control" id="inputfield4" placeholder="...">
+                                    <input type="text" name="los2" class="form-control" id="inputfield4" placeholder="...">
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </form>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="btn btn-primary center-block">
-                            OK
+                            <input type="submit" value="OK" class="border:0"> 
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 

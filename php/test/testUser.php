@@ -7,5 +7,5 @@
  */
 
 require('../classes/User.php');
-$us = new User(2);
-$us->letitout();
+
+echo 'UserID:'.User::idByName('Testerty');

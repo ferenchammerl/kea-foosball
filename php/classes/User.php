@@ -160,6 +160,32 @@ WHERE(
 
     }
 
+    public static function idByName($username)
+    {
+
+        require("config.php");
+        $user_id = -2;
+        $query = "SELECT user_id FROM users WHERE USERNAME = ?";
+
+
+        if ($stmt = $mysqli->prepare($query)) {
+            $stmt->bind_param('s', $username);
+
+            $stmt->execute();
+
+            /* bind result variables */
+            $stmt->bind_result($user_id);
+
+            $stmt->fetch();
+
+
+        } else {
+            die('dberror');
+        }
+
+        $stmt->close();
+        return $user_id;
+    }
 
     public static function checkUsername($username)
     {

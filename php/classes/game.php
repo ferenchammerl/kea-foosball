@@ -10,23 +10,36 @@ class Game
 //PRIMARY KEY (ID)
 //);
 
-    public $id;
+    public $game_id;
     public $location;
-    public $matchup;
+    public $matchup_id;
+    public $date;
 
-
-    function __construct($id)
+    function __construct()
     {
-        $this->id = $id;
+    }
+
+    public static function withID($game_id)
+    {
+        $instance = new self();
+        $instance->loadByID($game_id);
+        return $instance;
+
+
+    }
+
+    protected function loadByID($game_id)
+    {
+
+        $this->game_id = $game_id;
         require("../config.php");
 
         $location = 'DatabaseError';
-        $matchup = 0;
         $query = "SELECT location, matchupid FROM games WHERE id = ?";
 
 
         if ($stmt = $mysqli->prepare($query)) {
-            $stmt->bind_param('i', $id);
+            $stmt->bind_param('i', $game_id);
 
             $stmt->execute();
 
@@ -36,20 +49,46 @@ class Game
 
             while ($stmt->fetch()) {
                 $this->$location = $location;
-                $this->$matchup = $matchup;
+                $this->$matchup_id = $matchup;
             }
         }
-        echo $location;
-        echo $matchup;
+    }
 
+    public static function withData($location, $matchup, $date)
+    {
+        $instance = new self();
+        $instance->fill($location, $matchup, $date);
+        $instance->insert();
+        return $instance;
+    }
+
+    protected function fill($location, $matchup, $date)
+    {
+        $this->game_id = -1;
+        $this->location = $location;
+        $this->matchup_id = $matchup;
+        $this->date=$date;
+    }
+
+    protected function save()
+    {
 
     }
 
-    function __constructNew($id, $location, $matchup)
+    protected function insert()
     {
-        $this->id = $id;
-        $this->location = $location;
-        $this->matchup = $matchup;
+        require("config.php");
+        $stmt = $mysqli->prepare("INSERT INTO games (location,matchup_id) VALUES (?,?)");
+
+        echo  $this->matchup_id;
+
+        $stmt->bind_param('si', $this->location, $this->matchup_id);
+
+
+        /* execute prepared statement */
+        $stmt->execute();
+        $this->game_id = $mysqli->insert_id;
+        $stmt->close();
     }
 
 
