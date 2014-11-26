@@ -135,7 +135,11 @@ WHERE(
             if ($dbusername != $username) die('Incorrect username');
 
             $user = new User($dbuserid);
-            if (User::saltedPW($password, $user->salt) == $user->password) return $user; else die('Incorrect password');
+            if (User::saltedPW($password, $user->salt) == $user->password) {
+            
+                $_SESSION['username'] = $_POST['username'];
+                return $user;
+            } else die('Incorrect password');
 
         }
     }
@@ -205,6 +209,7 @@ WHERE(
 
             while ($stmt->fetch()) {
                 if ($username != $_POST['username']) die('Incorrect username');
+
             }
 
         } else {

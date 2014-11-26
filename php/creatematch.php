@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); require('classes/User.php'); if(!isset($_SESSION['user'])) die('Access Denied'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="btn btn-primary center-block">
-                            <input type="submit" value="OK" class="border:0"> 
+                            <input type="submit" value="OK" class="border:0">
                         </div>
                     </div>
                 </div>

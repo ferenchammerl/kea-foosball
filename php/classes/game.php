@@ -67,7 +67,7 @@ class Game
         $this->game_id = -1;
         $this->location = $location;
         $this->matchup_id = $matchup;
-        $this->date=$date;
+        $this->date = $date;
     }
 
     protected function save()
@@ -80,7 +80,7 @@ class Game
         require("config.php");
         $stmt = $mysqli->prepare("INSERT INTO games (location,matchup_id) VALUES (?,?)");
 
-        echo  $this->matchup_id;
+        echo $this->matchup_id;
 
         $stmt->bind_param('si', $this->location, $this->matchup_id);
 
@@ -91,6 +91,28 @@ class Game
         $stmt->close();
     }
 
+    public static function latestGame()
+    {
+        require("../config.php");
+
+        $location = 'DatabaseError';
+        $query = "SELECT location, matchupid FROM games COUNT = 1";
+
+
+        if ($stmt = $mysqli->prepare($query)) {
+
+            $stmt->execute();
+
+            /* bind result variables */
+            $stmt->bind_result($location, $matchup_id);
+
+
+            $stmt->fetch();
+            return
+        }
+        $stmt->close();
+
+    }
 
 }
 

@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); if(!isset($_SESSION['user'])) die('Access Denied'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
