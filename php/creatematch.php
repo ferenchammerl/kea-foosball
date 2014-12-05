@@ -1,4 +1,4 @@
-<?php session_start(); require('classes/User.php'); if(!isset($_SESSION['user'])) die('Access Denied'); ?>
+<?php session_start(); require( 'classes/User.php'); if(!isset($_SESSION[ 'user'])) die( 'Access Denied'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,7 @@
                         <h2><span class="label label-success">Winners</span></h2>
                     </div>
                 </div>
-                <form action = "creategame.php"  class="form-horizontal" role="form"  method="POST">
+                <form action="creategame.php" class="form-horizontal" role="form" method="POST">
                     <div class="row">
 
                         <div class="form-group">
@@ -68,13 +68,26 @@
                         </div>
 
                     </div>
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4 " style="text-align: center;">
-                    <button  type="submit" class="btn btn-primary">
-                        OK
-                    </button >
-                </div>
-                </div>
+                    <div class="row">
+                        <label for="locationfield" class="col-xs-12 control-label" style="text-align:center;">Location</label>
+                    </div>
+                    <div class="row">
+                        <div class="col col-xs-3"></div>
+                            <div class="col-xs-6 col-lg-6 controls">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><a class="fa fa-location-arrow"></a></span>
+                                    <input type="text" name="locfield" class="form-control" id="locationfield" placeholder="...">
+                                </div>
+                            </div>
+                        <div class="col col-xs-2"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-xs-12" style="text-align:center;">
+                            <button type="submit" class="btn btn-block btn-primary" >
+                                OK
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
